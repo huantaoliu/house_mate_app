@@ -33,7 +33,7 @@ class _HomePage extends State<HomePage> with SingleTickerProviderStateMixin {
           children: <Widget>[
             AppBar(
               automaticallyImplyLeading: false,
-              title: Text('Uer Manage'),
+              title: Text('User Manage'),
             )
           ],
         ),
@@ -65,7 +65,7 @@ class _HomePage extends State<HomePage> with SingleTickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/agent');
+          // Navigator.pushReplacementNamed(context, '/agent');
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
