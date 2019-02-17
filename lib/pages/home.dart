@@ -32,9 +32,14 @@ class _HomePage extends State<HomePage> with SingleTickerProviderStateMixin {
         child: Column(
           children: <Widget>[
             AppBar(
-              automaticallyImplyLeading: false,
-              title: Text('User Manage'),
-            )
+                automaticallyImplyLeading: false,
+                title: Text('Please Login'),
+                leading: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/avatar.jpg'),
+                  ),
+                )),
           ],
         ),
       ),
