@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:house_mate/pages/by_agent/agent_page.dart';
-import 'package:house_mate/pages/by_category/category_page.dart';
-import 'package:house_mate/pages/by_story/story_main_page.dart';
+import 'package:house_mate/pages/agent/agent_page.dart';
+import 'package:house_mate/pages/category/category_page.dart';
+import 'package:house_mate/pages/story/story_main_page.dart';
+import 'package:house_mate/pages/search/search_page.dart';
 
 class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
-    return _HomePage();
+    return HomePageState();
   }
 }
 
-class _HomePage extends State<HomePage> with SingleTickerProviderStateMixin {
+class HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   TabController tabController;
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -28,26 +32,13 @@ class _HomePage extends State<HomePage> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            AppBar(
-                automaticallyImplyLeading: false,
-                title: Text('Please Login'),
-                leading: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/avatar.jpg'),
-                  ),
-                )),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        title: Text('House Mate'),
-      ),
       body: TabBarView(
-        children: <Widget>[Category(), AgentPage(), StoryMainPage()],
+        children: <Widget>[
+          Category(),
+          SearchPage(),
+          AgentPage(),
+          StoryMainPage(),
+        ],
         controller: tabController,
       ),
       bottomNavigationBar: Material(
@@ -57,23 +48,30 @@ class _HomePage extends State<HomePage> with SingleTickerProviderStateMixin {
           tabs: <Widget>[
             Tab(
               text: 'Categories',
+              icon: Icon(Icons.toys),
+            ),
+            Tab(
+              text: 'Search',
+              icon: Icon(Icons.search),
             ),
             Tab(
               text: 'Agent',
+              icon: Icon(Icons.person_pin),
             ),
             Tab(
               text: 'Form',
+              icon: Icon(Icons.format_align_justify),
             )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          // Navigator.pushReplacementNamed(context, '/agent');
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.add),
+      //   onPressed: () {
+      //     // Navigator.pushReplacementNamed(context, '/agent');
+      //   },
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
